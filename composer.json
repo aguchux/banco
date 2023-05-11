@@ -1,0 +1,37 @@
+{
+    "name": "bank/landmarkfinanceonline",
+    "description": "Landmark Bank",
+    "type": "project",
+    "version": "2.0.0",
+    "keywords": ["psr4", "template"],
+    "license": "BSD",
+    "authors": [{
+        "name": "Ford Bank",
+        "email": "info@landmarkfinanceonline.com",
+        "homepage": "https://landmarkfinanceonline.com/",
+        "role": "Developer"
+    }],
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "classmap": ["_apps/", "_apps/Apps/"],
+        "psr-4": {
+            "Apps\\": ["_apps/", "_apps/Apps/"]
+        }
+    },
+    "require": {
+        "php": "^7.1.0",
+        "cocur/slugify": "^4.0",
+        "jajo/jsondb": "^2.1",
+        "mpdf/mpdf": "^8.0",
+        "swiftmailer/swiftmailer": "^6.2",
+        "verot/class.upload.php": "dev-master"
+    },
+    "scripts": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "bin": ["application"]
+}
