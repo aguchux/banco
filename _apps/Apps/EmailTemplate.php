@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * 		@file 	_apps/Apps/EmailTemplate.php
+ */
 namespace Apps;
 
 class EmailTemplate{
@@ -14,6 +17,7 @@ class EmailTemplate{
 	public $folder = '';
 	public $template_extension = template_file_extension;
 
+	//	Constructor
     function __construct($suggestions){
 		$this->set_folder( $this->templates_dir );
 		$template = $this->search_template( $suggestions );
@@ -29,6 +33,7 @@ class EmailTemplate{
         $this->variables[$key] = $val;
     }
 
+	//	Search for the template file
 	public function search_template( $template ){
 		
 		$template_arr = explode(".",$template);
@@ -57,6 +62,7 @@ class EmailTemplate{
 		return $found;
 	}
 
+	//	Compile the template file
     public function compile(){
         ob_start();
         extract($this->variables);
@@ -66,8 +72,7 @@ class EmailTemplate{
         return $content;
     }
 	
-	
-	
+
 }
 	
 	

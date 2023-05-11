@@ -3,9 +3,7 @@
 //Write your custome class/methods here
 namespace Apps;
 
-use \Apps\MysqliDb;
 use \Apps\Session;
-use \Verot\UploadFiles;
 
 class Core extends Model
 {

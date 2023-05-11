@@ -15,8 +15,7 @@ if (file_exists(DOT . '/config/config.php')) {
 	$Core = new Apps\Core;
 	$Template = new Apps\Template;
 
-	if ($Template->auth) {
-	}
+	if ($Template->auth) {}
 } else {
 	die('config.php not found!');
 }
