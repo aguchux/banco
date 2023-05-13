@@ -212,7 +212,7 @@ $UserInfo = $Core->UserInfo($accid);
           </li>
 
 
-          <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+          <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
               <i class="flaticon-381-layer-1"></i>
               <span class="nav-text">Site Pages</span>
             </a>
@@ -220,7 +220,7 @@ $UserInfo = $Core->UserInfo($accid);
               <li><a href="/admin/pages">Manage Pages</a></li>
               <li><a href="/admin/add-page">Create Page</a></li>
             </ul>
-          </li>
+          </li> -->
 
 
           <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -255,14 +255,14 @@ $UserInfo = $Core->UserInfo($accid);
           </li>
 
 
-          <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+          <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
               <i class="flaticon-381-network"></i>
               <span class="nav-text">Web Parts</span>
             </a>
             <ul aria-expanded="false">
               <li><a href="/admin/webparts">View Webparts</a></li>
             </ul>
-          </li>
+          </li> -->
 
 
           <li><a href="/admin/auth/logout" class="ai-icon" aria-expanded="false">
@@ -276,7 +276,7 @@ $UserInfo = $Core->UserInfo($accid);
         </ul>
         <div class="copyright">
           <p>Anthill Admin Dashboard <br>© 2021 All Rights Reserved</p>
-          <p class="op5">Made with <span class="heart"></span> by Golojan.net</p>
+          <p class="op5">Made with <span class="heart"></span> by Anthill</p>
         </div>
       </div>
     </div>
