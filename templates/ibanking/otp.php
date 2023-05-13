@@ -6,7 +6,7 @@
         <div class="header">
             <div class="row no-gutters">
                 <div class="col-auto">
-                    <a href="/ibanking/auth/login" class="btn  btn-link text-dark"><i class="material-icons">chevron_left</i></a>
+                    <a href="/auth/login" class="btn  btn-link text-dark"><i class="material-icons">chevron_left</i></a>
                 </div>
                 <div class="col text-center"></div>
                 <div class="col-auto">
@@ -17,7 +17,7 @@
 
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
-                <img src="<?= $assets ?>/dashboard/img/logo-login.png" alt="Landmark Finance Bank" class="logo-small mb-5">
+                <img src="<?= $assets ?>/dashboard/img/logo-login.png" alt="Citizens Bank Canada" class="logo-small mb-5">
                 <?= $Self->tokenize() ?>
                 <?= $Self->Toast() ?>
                 <div class="form-group">

@@ -18,7 +18,7 @@
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
                 <br>
-                <img src="<?= $assets ?>/dashboard/img/logo-login.png" class="mb-4" alt="Landmark Finance Bank" class="logo-small mb-3">
+                <img src="<?= $assets ?>/dashboard/img/logo-login.png" class="mb-4" alt="Citizens Bank Canada" class="logo-small mb-3">
                 <?= $Self->tokenize() ?>
 
                 <div class="row">
@@ -29,7 +29,7 @@
                             </div>
                             <p>Congratulations <strong><?= "{$UserInfo->firstname} {$UserInfo->lastname}" ?></strong>!</p>
                             <p>Your application has been submitted. However, our team will begin review of the details and documents you submitted.</p>
-                            <p><a href="/ibanking/auth/lock/reset" class="btn btn-default btn-lg btn-rounded shadow btn-block">Back To Website</a></p>
+                            <p><a href="/auth/lock/reset" class="btn btn-default btn-lg btn-rounded shadow btn-block">Back To Website</a></p>
                         </div>
                     </div>
                     <div class="col-12 col-md-12 mt-3">

@@ -1,8 +1,7 @@
 <?php
 
-use function PHPSTORM_META\map;
 
-$Route->add('/ibanking/auth/register/previous', function () {
+$Route->add('/auth/register/previous', function () {
     $Template = new Apps\Template;
     $regstep = (int)$Template->storage("regstep");
     if ($regstep <= 1) {
@@ -11,7 +10,7 @@ $Route->add('/ibanking/auth/register/previous', function () {
         $regstep = $regstep - 1;
     }
     $Template->store("regstep", $regstep);
-    $Template->redirect("/ibanking/auth/register");
+    $Template->redirect("/auth/register");
 }, 'GET');
 
 
@@ -39,7 +38,7 @@ $Route->add('/banco/auth/register', function () {
             $RegData["lastname"] = $Data->lastname;
             $Template->store("RegData", $RegData);
             $Template->store("regstep", 1);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
         case 1:
             $RegData["address"] = $Data->address;
@@ -50,7 +49,7 @@ $Route->add('/banco/auth/register', function () {
             $RegData["zipcode"] = $Data->zipcode;
             $Template->store("RegData", $RegData);
             $Template->store("regstep", 2);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
         case 2:
             $regmail =  md5($RegData["email"]);
@@ -68,14 +67,14 @@ $Route->add('/banco/auth/register', function () {
             }
             $Template->store("regstep", 3);
             $Template->store("RegData", $RegData);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
         case 3:
             $RegData["currency"] = $Data->currency;
             $RegData["account_type"] = $Data->account_type;
             $Template->store("regstep", 4);
             $Template->store("RegData", $RegData);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
         case 4:
             $regmail =  md5($RegData["email"]);
@@ -93,7 +92,7 @@ $Route->add('/banco/auth/register', function () {
             }
             $Template->store("RegData", $RegData);
             $Template->store("regstep", 5);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
         case 5:
             $regmail =  md5($RegData["email"]);
@@ -111,7 +110,7 @@ $Route->add('/banco/auth/register', function () {
             }
             $Template->store("RegData", $RegData);
             $Template->store("regstep", 6);
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
 
         case 6:
@@ -151,7 +150,7 @@ $Route->add('/banco/auth/register', function () {
                 // $sent = $SMSLive->send($Login->mobile, "");
                 //SMS HERE//
 
-                $subject = "Welcome to Landmark Finance";
+                $subject = "Welcome to Citizens Bank";
                 $mailbody = "<p>Congratulations <strong>{$fullname}</strong>!</p>
                 <p>Your application has been submitted. However, our team will begin review of the details and documents you submitted.</p>
                 <p>You will recieve your account details as soon as we have completed the verification and profiling.</p>
@@ -188,23 +187,23 @@ $Route->add('/banco/auth/register', function () {
                     //Email Notix//
                 }
 
-                $Template->redirect("/ibanking/auth/lock");
+                $Template->redirect("/auth/lock");
             } else {
                 $Template->store("regstep", 0);
                 $Template->setError("Registration of your account failed, kindly try again or contact support.", "danger", "/ibanking/auth/register");
-                $Template->redirect("/ibanking/auth/register");
+                $Template->redirect("/auth/register");
             }
 
             break;
 
         default:
             $Template->expire();
-            $Template->redirect("/ibanking/auth/register");
+            $Template->redirect("/auth/register");
             break;
     }
 
     $Template->setError("Registration of your account failed, kindly try again or contact support.", "danger", "/ibanking/auth/register");
-    $Template->redirect("/ibanking/auth/register");
+    $Template->redirect("/auth/register");
 }, 'POST');
 
 
@@ -283,7 +282,7 @@ $Route->add('/banco/auth/login', function () {
             }
 
             $Template->setError("We sent you a One Time Pin for login", "success", "/ibanking/auth/otp");
-            $Template->redirect("/ibanking/auth/otp");
+            $Template->redirect("/auth/otp");
         } else {
 
             $Template->authorize($accid);
@@ -338,12 +337,12 @@ $Route->add('/banco/auth/login', function () {
 
 
 
-            $Template->redirect("/ibanking/");
+            $Template->redirect("/");
         }
     }
 
     $Template->setError("Login details incoorect, recheck and try again", "danger", "/ibanking/auth/login");
-    $Template->redirect("/ibanking/auth/login");
+    $Template->redirect("/auth/login");
 }, 'POST');
 
 
@@ -418,11 +417,11 @@ $Route->add('/banco/auth/otp', function () {
             //Email Notix//
         }
 
-        $Template->redirect("/ibanking/");
+        $Template->redirect("/");
     }
 
     $Template->setError("One Time Password is incorrect, recheck and try again", "danger", "/ibanking/auth/otp");
-    $Template->redirect("/ibanking/auth/otp");
+    $Template->redirect("/auth/otp");
 }, 'POST');
 
 
@@ -467,7 +466,7 @@ $Route->add('/banco/dashboard/profile', function () {
     }
 
     $Template->setError("Profile updated successfully", "success", "/ibanking/profile");
-    $Template->redirect("/ibanking/profile");
+    $Template->redirect("/profile");
 }, 'POST');
 
 
@@ -506,7 +505,7 @@ $Route->add('/banco/dashboard/settings', function () {
     $Banco->SetUserInfo($accid, "profile_notix", $profile_notix);
 
     $Template->setError("Settings updated successfully", "success", "/ibanking/settings");
-    $Template->redirect("/ibanking/settings");
+    $Template->redirect("/settings");
 }, 'POST');
 
 
@@ -571,11 +570,11 @@ $Route->add('/banco/auth/reset', function () {
         }
 
         $Template->setError("We sent you a temporary password.", "success", "/ibanking/auth/reset");
-        $Template->redirect("/ibanking/auth/reset");
+        $Template->redirect("/auth/reset");
     }
 
     $Template->setError("Login details incorrect, recheck and try again", "danger", "/ibanking/auth/reset");
-    $Template->redirect("/ibanking/auth/reset");
+    $Template->redirect("/auth/reset");
 }, 'POST');
 
 
@@ -595,13 +594,13 @@ $Route->add('/banco/auth/changepassword', function () {
 
     if ($Data->oldpass != $curr_password) {
         $Template->setError("Current password is not correct", "danger", "/ibanking");
-        $Template->redirect("/ibanking");
+        $Template->redirect("");
     }
 
 
     if ($Data->newpass != $Data->newpass1) {
         $Template->setError("Password did not match", "danger", "/ibanking");
-        $Template->redirect("/ibanking");
+        $Template->redirect("");
     }
 
     $Banco->SetUserInfo($accid, "password", $Data->newpass);
@@ -657,7 +656,7 @@ $Route->add('/banco/auth/changepassword', function () {
 
 
     $Template->setError("Password updated successfully", "success", "/ibanking");
-    $Template->redirect("/ibanking");
+    $Template->redirect("");
 }, 'POST');
 
 
@@ -737,7 +736,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
 
         $Template->setError("Transaction PIN set successfully", "success", "/ibanking/transfer");
-        $Template->redirect("/ibanking/transfer");
+        $Template->redirect("/transfer");
     }
 
     switch ($paystep) {
@@ -746,7 +745,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
             $Template->store("PayData", $PayData);
             $Template->store("paystep", 1);
             $Template->setError("Transfer transaction started", "success", "/ibanking/transfer");
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
             break;
         case 1:
             $PayData['name'] = $Data->name;
@@ -762,7 +761,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
             $Template->store("paystep", 2);
 
             $Template->setError("Transfer information saved", "success", "/ibanking/transfer");
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
 
             break;
         case 2:
@@ -770,7 +769,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
             $securepin = $Data->securepin;
             if ($ThisUser->pin != $securepin) {
                 $Template->setError("Incorrect Transaction PIN", "danger", "/ibanking/transfer");
-                $Template->redirect("/ibanking/transfer");
+                $Template->redirect("/transfer");
             }
             $PayData['pin'] = $securepin;
 
@@ -824,13 +823,13 @@ $Route->add('/banco/dashboard/sendmoney', function () {
                 $Template->store("PayData", $PayData);
                 $Template->store("paystep", 3);
                 $Template->setError("Transaction PIN verified successfully", "success", "/ibanking/transfer");
-                $Template->redirect("/ibanking/transfer");
+                $Template->redirect("/transfer");
             }
 
             $Template->store("PayData", $PayData);
             $Template->store("paystep", 4);
             $Template->setError("Transaction PIN verified successfully", "success", "/ibanking/transfer");
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
             break;
 
         case 3:
@@ -839,7 +838,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
                 $otp = $Data->otp;
                 if ($otp != $ThisUser->otp) {
                     $Template->setError("Incorrect One Time Password", "danger", "/ibanking/transfer");
-                    $Template->redirect("/ibanking/transfer");
+                    $Template->redirect("/transfer");
                 }
                 $Banco->SetUserInfo($accid, "otp_pending", 0);
                 $Banco->SetUserInfo($accid, "otp", null);
@@ -847,11 +846,11 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
                 $Template->store("paystep", 4);
                 $Template->setError("One Time Password Verified", "success", "/ibanking/transfer");
-                $Template->redirect("/ibanking/transfer");
+                $Template->redirect("/transfer");
             }
 
             $Template->store("paystep", 4);
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
 
             break;
 
@@ -875,7 +874,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
 
             $Template->store("PayData", $PayData);
             $Template->store("paystep", 5);
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
 
             break;
 
@@ -892,12 +891,12 @@ $Route->add('/banco/dashboard/sendmoney', function () {
                 } elseif ($transfer_error == "uvc") {
                     $Template->setError("Incorrect AUniversal Verification Code", "danger", "/ibanking/transfer");
                 }
-                $Template->redirect("/ibanking/transfer");
+                $Template->redirect("/transfer");
             }
             $PayData['transfer_error_cleared'] = 1;
             $Template->store("PayData", $PayData);
             $Template->store("paystep", 7);
-            $Template->redirect("/ibanking/transfer");
+            $Template->redirect("/transfer");
             break;
 
         default:
@@ -906,7 +905,7 @@ $Route->add('/banco/dashboard/sendmoney', function () {
     }
 
     $Template->setError("Funds Transfer Failed", "danger", "/ibanking");
-    $Template->redirect("/ibanking");
+    $Template->redirect("");
 }, 'POST');
 
 
@@ -962,5 +961,5 @@ $Route->add('/banco/dashboard/kyc', function () {
     }
 
     $Template->setError("KYC documents uploaded successfully", "success", "/ibanking/kyc");
-    $Template->redirect("/ibanking/kyc");
+    $Template->redirect("/kyc");
 }, 'POST');

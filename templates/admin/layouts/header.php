@@ -13,6 +13,8 @@ $UserInfo = $Core->UserInfo($accid);
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><?= $title ?></title>
 
+  <link href="<?= $adminassets ?>/icons/flaticon/flaticon.css" rel="stylesheet">
+
   <link href="<?= $adminassets ?>/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="<?= $adminassets ?>/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
   <link href="<?= $adminassets ?>/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
@@ -263,7 +265,7 @@ $UserInfo = $Core->UserInfo($accid);
           </li>
 
 
-          <li><a href="/auth/logout" class="ai-icon" aria-expanded="false">
+          <li><a href="/admin/auth/logout" class="ai-icon" aria-expanded="false">
               <i class="flaticon-381-television"></i>
               <span class="nav-text">Logout</span>
             </a>

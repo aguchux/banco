@@ -16,8 +16,7 @@
 
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
-                <br>
-                <img src="<?= $assets ?>/dashboard/img/logo-login.png" class="mb-4" alt="Landmark Finance Bank" class="logo-small">
+                <img src="https://www.citizensbcanada.com/assets/images/logo.png" style="width:200px" class="mb-4" alt="Citizens Bank Canada" class="logo-small">
                 <?= $Self->tokenize() ?>
                 <?= $Self->Toast() ?>
                 <div class="form-group">
@@ -29,8 +28,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-6 text-left"><a href="/ibanking/auth/register" class="mt-4 d-block">Create Account</a></div>
-                    <div class="col-6 text-right"><a href="/ibanking/auth/reset" class="mt-4 d-block">Reset Password?</a> </div>
+                    <div class="col-6 text-left"><a href="/auth/register" class="mt-4 d-block">Create Account</a></div>
+                    <div class="col-6 text-right"><a href="/auth/reset" class="mt-4 d-block">Reset Password?</a> </div>
                 </div>
             </div>
         </div>

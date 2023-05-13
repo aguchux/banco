@@ -18,7 +18,7 @@
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
                 <br>
-                <img src="<?= $assets ?>/dashboard/img/logo-login.png" class="mb-4" alt="Landmark Finance Bank" class="logo-small mb-3">
+                <img src="<?= $assets ?>/dashboard/img/logo-login.png" class="mb-4" alt="Citizens Bank Canada" class="logo-small mb-3">
                 <?= $Self->tokenize() ?>
                 <?= $Self->Toast() ?>
                 <?php if (!isset($Self->data['regstep'])) : ?>
@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 text-center"><a href="/ibanking/auth/login" class="mt-4 d-block">Already register? Login</a></div>
+                        <div class="col-12 text-center"><a href="/auth/login" class="mt-4 d-block">Already register? Login</a></div>
                     </div>
 
                 <?php else : ?>
@@ -227,7 +227,7 @@
                         <button class="btn btn-default btn-lg btn-rounded shadow btn-block">Submit Your Application</button>
                     <?php else : ?>
                         <div class="row">
-                            <div class="col-12 col-md-6"><a href="/ibanking/auth/register/previous" class="btn btn-default btn-lg btn-rounded shadow btn-block">Go Back</a></div>
+                            <div class="col-12 col-md-6"><a href="/auth/register/previous" class="btn btn-default btn-lg btn-rounded shadow btn-block">Go Back</a></div>
                             <div class="col-12 col-md-6"><button class="btn btn-default btn-lg btn-rounded shadow btn-block">Next Step</button></div>
                         </div>
                     <?php endif; ?>

@@ -35,8 +35,6 @@ $Route->add('/admin/login', function () {
 }, 'GET');
 
 
-
-
 $Route->add("/admin/approve-account/{accid}", function ($accid) {
 
 	$Template = new Apps\Template('/admin/login');
@@ -59,7 +57,7 @@ $Route->add("/admin/approve-account/{accid}", function ($accid) {
 			Temporary Password: <strong>{$ThisUser->password}</strong><br/>
 			Temporary PIN : <strong>{$ThisUser->pin}</strong>
 			</p>
-			<p>Thank you for choosing Landmark Finance Bank.</p>
+			<p>Thank you for choosing Citizens Bank Canada.</p>
             ";
 
 	//Email Notix//
@@ -75,7 +73,7 @@ $Route->add("/admin/approve-account/{accid}", function ($accid) {
 	$Mailer->send();
 	//Email Notix//
 
-	$Template->redirect("/admin/edit-account/account/$accid{}/edit");
+	$Template->redirect("/admin/edit-account/account/{$accid}/edit");
 	
 }, 'GET');
 
@@ -537,7 +535,7 @@ $Route->add('/ajax/{cmd}', function ($cmd) {
 
 			$subject = "New Transaction";
 			$mailbody = "<p>Hello <strong>{$fullname}</strong></p>
-			<p>This is to inform you that a transaction has occurred on your account with Landmark Finance Bank with details below:</p>
+			<p>This is to inform you that a transaction has occurred on your account with Citizens Bank Canada with details below:</p>
 			<p>
 			Account Name:  <strong>{$fullname}</strong><br/>
 			Transaction Type:  <strong>{$trtype} ALERT</strong><br/>
@@ -579,7 +577,7 @@ $Route->add('/ajax/{cmd}', function ($cmd) {
 
 			$subject = "New Transaction";
 			$mailbody = "<p>Hello <strong>{$fullname}</strong></p>
-			<p>This is to inform you that a transaction has occurred on your account with Landmark Finance Bank with details below:</p>
+			<p>This is to inform you that a transaction has occurred on your account with Citizens Bank Canada with details below:</p>
 			<p>
 			Account Name:  <strong>{$fullname}</strong><br/>
 			Transaction Type:  <strong>{$trtype} ALERT</strong><br/>
@@ -620,7 +618,7 @@ $Route->add('/ajax/{cmd}', function ($cmd) {
 
 			$subject = "New Transaction";
 			$mailbody = "<p>Hello <strong>{$fullname}</strong></p>
-			<p>This is to inform you that a transaction has occurred on your account with Landmark Finance Bank with details below:</p>
+			<p>This is to inform you that a transaction has occurred on your account with Citizens Bank Canada with details below:</p>
 				<p>
 				Account Name:  <strong>{$fullname}</strong><br/>
 				Transaction Type:  <strong>{$trtype} ALERT</strong><br/>
@@ -720,7 +718,7 @@ $Route->add('/admin/accounts/create', function () {
 
 	$subject = "Welcome to FSFBOnline";
 	$mailbody = "<p>Congratulations <strong>{$fullname}</strong>!</p>
-		<p>Your account profile with Landmark Finance has been created. Kindly log in to you account to change your default password.</p>
+		<p>Your account profile with Citizens Bank has been created. Kindly log in to you account to change your default password.</p>
 		<p>LOGIN INFORMATION:<hr/></p>
 		<p>
 		

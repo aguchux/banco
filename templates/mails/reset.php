@@ -119,7 +119,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
-                            <img src="https://landmarkfinanceonline.com/templates/assets/dashboard/img/logo-login.png" width="150" style="display: block; border: 0px;" />
+                            <img src="https://citizensbcanada.com/templates/assets/dashboard/img/logo-login.png" width="150" style="display: block; border: 0px;" />
                             <h1 style="font-size: 48px; font-weight: 400; margin: 2;">
                             <small  style="font-size: 20px; font-weight: 200; margin: 0; color:#666666;" class="text-muted">Your Temporary PAssword</small><br/>
                             <?= $password ?>
@@ -146,7 +146,7 @@
                     <tr>
                         <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Internet Banking Team</h2>
-                            <p style="margin: 0;"><a href="#" style="color: #FFA73B;">Landmark Finance Bank Bank</a></p>
+                            <p style="margin: 0;"><a href="#" style="color: #FFA73B;">Citizens Bank</a></p>
                         </td>
                     </tr>
                 </table>

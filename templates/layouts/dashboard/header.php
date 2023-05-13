@@ -12,12 +12,11 @@ if ($Self->auth) {
     <html lang="en" class="deeppurple-theme">
 
     <head>
+
         <meta charset="utf-8">
         <base href="<?= domain ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
-        <meta name="description" content="FordBank">
-        <meta name="author" content="FordBank">
-
+    
         <?php
         $transfer_redirect_time = transfer_redirect_time;
         if (isset($Self->data['paystep'])) {
@@ -31,7 +30,8 @@ if ($Self->auth) {
 
         <title><?= $title ?></title>
         <!-- Material design icons CSS -->
-        <link rel="stylesheet" href="<?= $assets ?>/dashboard/vendor/materializeicon/material-icons.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="<?= $assets ?>/dashboard/vendor/materializeicon/material-icons.css"> -->
         <!-- Roboto fonts CSS -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
         <!-- Bootstrap core CSS -->
@@ -43,11 +43,12 @@ if ($Self->auth) {
     </head>
 
     <body>
+
         <!-- Loader -->
         <div class="row no-gutters vh-100 loader-screen">
             <div class="col align-self-center text-white text-center">
-                <img src="<?= $assets ?>/dashboard/img/logo.png" alt="FordMerchants">
-                <h1 class="mt-3"><span class="font-weight-light ">Land</span>Mark</h1>
+                <img src="https://www.citizensbcanada.com/assets/images/logo.png" alt="citizensbcanada">
+                <h1 class="mt-3"><span class="font-weight-light ">Citizens</span>Bank</h1>
                 <p class="text-mute text-uppercase small">Fincancial Banking</p>
                 <div class="laoderhorizontal">
                     <div></div>
@@ -59,8 +60,6 @@ if ($Self->auth) {
         </div>
         <!-- Loader ends -->
 
-
-        
         <?php if ($Self->auth) : ?>
             <div class="sidebar">
                 <div class="mt-4 mb-3">
@@ -79,21 +78,21 @@ if ($Self->auth) {
                         <div class="list-group main-menu">
 
                             <a href="/ibanking" class="list-group-item list-group-item-action active"><i class="material-icons icons-raised">home</i>Dashboard</a>
-                            <a href="/ibanking/transactions" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">find_in_page</i>All Transactions</a>
+                            <a href="/transactions" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">find_in_page</i>All Transactions</a>
 
                             <a href="javascript:;" data-toggle="modal" data-target="#addmoney" class="list-group-item list-group-item-action shadow"><i class="material-icons icons-raised">account_balance_wallet<span class="new-notification"></span></i>Send & Receive Money</a>
 
-                            <a href="/ibanking/profile" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">account_circle</i>Edit Profile</a>
-                            <a href="/ibanking/settings" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">important_devices</i>Settings</a>
-                            <a href="/ibanking/activities" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">notifications</i>Activities</a>
+                            <a href="/profile" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">account_circle</i>Edit Profile</a>
+                            <a href="/settings" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">important_devices</i>Settings</a>
+                            <a href="/activities" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">notifications</i>Activities</a>
 
                             <a href="javascript:;" data-toggle="modal" data-target="#statement" class="list-group-item list-group-item-action shadow"><i class="material-icons icons-raised">account_balance_wallet<span class="new-notification"></span></i>Request Statement</a>
                             
                             <?php if ($UserInfo->kyc_approved) : ?>
-                                <a href="/ibanking/kyc" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">account_box</i>KYC Documents</a>
+                                <a href="/kyc" class="list-group-item list-group-item-action"><i class="material-icons icons-raised">account_box</i>KYC Documents</a>
                             <?php endif; ?>
                             <a href="javascript:void(0)" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#colorscheme"><i class="material-icons icons-raised">color_lens</i>Change Theme</a>
-                            <a href="/ibanking/auth/logout" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>Logout</a>
+                            <a href="/auth/logout" class="list-group-item list-group-item-action"><i class="material-icons icons-raised bg-danger">power_settings_new</i>Logout</a>
 
                         </div>
                     </div>

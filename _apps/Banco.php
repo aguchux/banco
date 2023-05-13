@@ -12,7 +12,7 @@ class Banco extends Core
 
 	public function TransferInfo($id)
 	{
-		$TransferInfo = mysqli_query($this->dbCon, "select * from banco_transfers where id='$id'");
+		$TransferInfo = mysqli_query($this->dbCon, "select * from transfers where id='$id'");
 		$TransferInfo = mysqli_fetch_object($TransferInfo);
 		return $TransferInfo;
 	}
@@ -24,7 +24,7 @@ class Banco extends Core
 		$transid = time();
 		if ($this->Debit($accid, $TransferInfo->amount)) {
 			$notes = "Funds transfer: #{$transferid}/{$transid}/{$TransferInfo->name}";
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,transferid,amount,type,notes) VALUES('$transid','$accid','$transferid','$TransferInfo->amount','DEBIT','$notes')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,transferid,amount,type,notes) VALUES('$transid','$accid','$transferid','$TransferInfo->amount','DEBIT','$notes')");
 			return $this->getLastId();
 		}
 		return false;
@@ -34,7 +34,7 @@ class Banco extends Core
 	{
 		$transid = time();
 		if ($this->Debit($accid, $amount)) {
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,amount,type,notes) VALUES('$transid','$accid','$amount','$type','$notes')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,amount,type,notes) VALUES('$transid','$accid','$amount','$type','$notes')");
 			return $this->getLastId();
 		}
 		return false;
@@ -45,7 +45,7 @@ class Banco extends Core
 	{
 		$transid = time();
 		if ($this->Credit($accid, $amount)) {
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,amount,type,notes) VALUES('$transid','$accid','$amount','$type','$notes')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,amount,type,notes) VALUES('$transid','$accid','$amount','$type','$notes')");
 			return $this->getLastId();
 		}
 		return false;
@@ -55,8 +55,8 @@ class Banco extends Core
 
 	public function CreateAccount($currency, $account_type, $email, $mobile, $pasword, $firstname, $lastname, $address, $address2, $zipcode, $city, $state, $country)
 	{
-		mysqli_query($this->dbCon, "INSERT INTO banco_accounts(currency, account_type, email, mobile,pasword, firstname, lastname, address, address2, zipcode, city, state, country) VALUES('$currency', '$account_type', '$email', '$mobile', '$pasword', '$firstname', '$lastname', '$address', '$address2', '$zipcode', '$city', '$state', '$country')");
-		//mysqli_query($this->dbCon, "INSERT INTO banco_accounts(email, mobile,pasword, firstname, lastname) VALUES('$email', '$mobile', '$pasword', '$firstname', '$lastname')");
+		mysqli_query($this->dbCon, "INSERT INTO accounts(currency, account_type, email, mobile,pasword, firstname, lastname, address, address2, zipcode, city, state, country) VALUES('$currency', '$account_type', '$email', '$mobile', '$pasword', '$firstname', '$lastname', '$address', '$address2', '$zipcode', '$city', '$state', '$country')");
+		//mysqli_query($this->dbCon, "INSERT INTO accounts(email, mobile,pasword, firstname, lastname) VALUES('$email', '$mobile', '$pasword', '$firstname', '$lastname')");
 		return $this->getLastId();
 	}
 
@@ -67,7 +67,7 @@ class Banco extends Core
 		$admin = $Temp->data['accid'];
 		$transid = time();
 		if ($this->Debit($accid, $amount)) {
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,amount,type,notes,by_admin) VALUES('$transid','$accid','$amount','$type','$notes','$admin')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,amount,type,notes,by_admin) VALUES('$transid','$accid','$amount','$type','$notes','$admin')");
 			return $this->getLastId();
 		}
 		return false;
@@ -80,7 +80,7 @@ class Banco extends Core
 		$admin = $Temp->data['accid'];
 		$transid = time();
 		if ($this->Credit($accid, $amount)) {
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,amount,type,notes,by_admin) VALUES('$transid','$accid','$amount','$type','$notes','$admin')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,amount,type,notes,by_admin) VALUES('$transid','$accid','$amount','$type','$notes','$admin')");
 			return $this->getLastId();
 		}
 		return false;
@@ -88,13 +88,13 @@ class Banco extends Core
 
 	public function Debit($accid, $amount)
 	{
-		mysqli_query($this->dbCon, "UPDATE banco_accounts SET balance=balance-'$amount' where accid='$accid'");
+		mysqli_query($this->dbCon, "UPDATE accounts SET balance=balance-'$amount' where accid='$accid'");
 		return mysqli_affected_rows($this->dbCon);
 	}
 
 	public function Credit($accid, $amount)
 	{
-		mysqli_query($this->dbCon, "UPDATE banco_accounts SET balance=balance+'$amount' where accid='$accid'");
+		mysqli_query($this->dbCon, "UPDATE accounts SET balance=balance+'$amount' where accid='$accid'");
 		return mysqli_affected_rows($this->dbCon);
 	}
 
@@ -105,7 +105,7 @@ class Banco extends Core
 		$transid = time();
 		if ($this->Debit($accid, $TransferInfo->amount)) {
 			$notes = "Funds transfer: #{$transferid}/{$transid}/{$TransferInfo->name}";
-			mysqli_query($this->dbCon, "INSERT INTO banco_transactions(transid,accid,transferid,amount,type,notes) VALUES('$transid','$accid','$transferid','$TransferInfo->amount','DEBIT','$notes')");
+			mysqli_query($this->dbCon, "INSERT INTO transactions(transid,accid,transferid,amount,type,notes) VALUES('$transid','$accid','$transferid','$TransferInfo->amount','DEBIT','$notes')");
 			return mysqli_affected_rows($this->dbCon);
 		}
 		return false;
@@ -126,7 +126,7 @@ class Banco extends Core
 
 	public function genAccid()
 	{
-		$genAccid = mysqli_query($this->dbCon, "SELECT MAX(accid) AS maxaccid from banco_accounts");
+		$genAccid = mysqli_query($this->dbCon, "SELECT MAX(accid) AS maxaccid from accounts");
 		$genAccid = mysqli_fetch_object($genAccid);
 		$maxaccid =  (int)$genAccid->maxaccid;
 		if (($maxaccid == 1234567890) || ($maxaccid == 0)) {
@@ -141,7 +141,7 @@ class Banco extends Core
 	public function LoadCountriesToSelect($selcountry = "")
 	{
 		$html = "";
-		$LoadCountriesToSelect = mysqli_query($this->dbCon, "SELECT * FROM banco_countries");
+		$LoadCountriesToSelect = mysqli_query($this->dbCon, "SELECT * FROM countries");
 		while ($country = mysqli_fetch_object($LoadCountriesToSelect)) {
 			if ($selcountry == $country->name) {
 				$html .= "<option value=\"{$country->name}\" selected>{$country->name}</option>";
@@ -155,7 +155,7 @@ class Banco extends Core
 	public function LoadCurrenciesToSelect($selcurrency = "")
 	{
 		$html = "";
-		$LoadCurrenciesToSelect = mysqli_query($this->dbCon, "SELECT * FROM banco_currencies");
+		$LoadCurrenciesToSelect = mysqli_query($this->dbCon, "SELECT * FROM currencies");
 		while ($currency = mysqli_fetch_object($LoadCurrenciesToSelect)) {
 			if ($selcurrency == $currency->name) {
 				$html .= "<option value=\"{$currency->code}\" selected>{$currency->name} ({$currency->code})</option>";
@@ -224,11 +224,11 @@ class Banco extends Core
 	public function SumTransactions($type = 'CREDIT')
 	{
 		if ($type == "CREDIT") {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions WHERE type='CREDIT' OR type='REVERSE'");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions WHERE type='CREDIT' OR type='REVERSE'");
 		} elseif ($type == "DEBIT") {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions WHERE type='DEBIT' OR type='FEES'");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions WHERE type='DEBIT' OR type='FEES'");
 		} else {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions");
 		}
 		$SumTransactions = mysqli_fetch_object($SumTransactions);
 		return $SumTransactions->transum;
@@ -238,18 +238,18 @@ class Banco extends Core
 	public function SumUserTransactions($accid, $type = 'CREDIT')
 	{
 		if ($type == "CREDIT") {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions WHERE accid = '$accid' AND (type='CREDIT' OR type='REVERSE')");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions WHERE accid = '$accid' AND (type='CREDIT' OR type='REVERSE')");
 		} elseif ($type == "DEBIT") {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions WHERE accid = '$accid' AND (type='DEBIT' OR type='FEES')");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions WHERE accid = '$accid' AND (type='DEBIT' OR type='FEES')");
 		} else {
-			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM banco_transactions WHERE accid = '$accid'");
+			$SumTransactions = mysqli_query($this->dbCon, "SELECT SUM(amount) AS transum FROM transactions WHERE accid = '$accid'");
 		}
 		$SumTransactions = mysqli_fetch_object($SumTransactions);
 		return $SumTransactions->transum;
 	}
 	public function UserInfo($username)
 	{
-		$UserInfo = mysqli_query($this->dbCon, "SELECT * FROM banco_accounts WHERE accid='$username' OR email='$username'");
+		$UserInfo = mysqli_query($this->dbCon, "SELECT * FROM accounts WHERE accid='$username' OR email='$username'");
 		$UserInfo = mysqli_fetch_object($UserInfo);
 		return $UserInfo;
 	}
@@ -275,7 +275,7 @@ class Banco extends Core
 
 	public function CurrInfo($curr)
 	{
-		$CurrInfo = mysqli_query($this->dbCon, "select * from banco_currencies where code='$curr'");
+		$CurrInfo = mysqli_query($this->dbCon, "select * from currencies where code='$curr'");
 		$CurrInfo = mysqli_fetch_object($CurrInfo);
 		return $CurrInfo;
 	}
@@ -336,31 +336,30 @@ class Banco extends Core
 		return $color;
 	}
 
+
 	public function cardCurrencies()
 	{
-		$cardCurrencies = mysqli_query($this->dbCon, "select * from banco_currencies ORDER BY id ASC");
+		$cardCurrencies = mysqli_query($this->dbCon, "select * from currencies ORDER BY id ASC");
 		return $cardCurrencies;
 	}
 
 
 	public function LogActivity($accid, $get_ip, $get_os, $get_browser, $get_device)
 	{
-		mysqli_query($this->dbCon, "INSERT INTO banco_activities(accid,ip,os,browser,device) VALUES('$accid','$get_ip','$get_os','$get_browser','$get_device')");
+		mysqli_query($this->dbCon, "INSERT INTO activities(accid,ip,os,browser,device) VALUES('$accid','$get_ip','$get_os','$get_browser','$get_device')");
 		return $this->getLastId();
 	}
 
-
-
 	public function LogonActivities($accid)
 	{
-		$LogonActivities = mysqli_query($this->dbCon, "SELECT * FROM banco_activities WHERE accid='$accid'");
+		$LogonActivities = mysqli_query($this->dbCon, "SELECT * FROM activities WHERE accid='$accid'");
 		return $LogonActivities;
 	}
 
 
 	public function AllTransactions()
 	{
-		$AllTransactions = mysqli_query($this->dbCon, "SELECT * FROM banco_transactions ORDER BY created DESC");
+		$AllTransactions = mysqli_query($this->dbCon, "SELECT * FROM transactions ORDER BY created DESC");
 		return $AllTransactions;
 	}
 
@@ -368,13 +367,13 @@ class Banco extends Core
 
 	public function RecentTransactions($limit = 10)
 	{
-		$RecentTransactions = mysqli_query($this->dbCon, "SELECT * FROM banco_transactions ORDER BY created DESC");
+		$RecentTransactions = mysqli_query($this->dbCon, "SELECT * FROM transactions ORDER BY created DESC");
 		return $RecentTransactions;
 	}
 
 	public function CountTransactions()
 	{
-		$CountTransactions = mysqli_query($this->dbCon, "SELECT count(tid) AS transcount FROM banco_transactions");
+		$CountTransactions = mysqli_query($this->dbCon, "SELECT count(tid) AS transcount FROM transactions");
 		$CountTransactions = mysqli_fetch_object($CountTransactions);
 		return $CountTransactions->transcount;
 	}
@@ -382,14 +381,14 @@ class Banco extends Core
 
 	public function RecentUserTransactions($accid)
 	{
-		$RecentTransactions = mysqli_query($this->dbCon, "SELECT * FROM banco_transactions WHERE accid='$accid' ORDER BY created DESC");
+		$RecentTransactions = mysqli_query($this->dbCon, "SELECT * FROM transactions WHERE accid='$accid' ORDER BY created DESC");
 		return $RecentTransactions;
 	}
 
 
 	public function TransactionInfo($id)
 	{
-		$TransactionInfo = mysqli_query($this->dbCon, "select * from banco_transactions where tid='$id' OR transid='$id'");
+		$TransactionInfo = mysqli_query($this->dbCon, "select * from transactions where tid='$id' OR transid='$id'");
 		$TransactionInfo = mysqli_fetch_object($TransactionInfo);
 		return $TransactionInfo;
 	}
@@ -397,7 +396,7 @@ class Banco extends Core
 
 	public function CountUserTransactions($accid)
 	{
-		$CountTransactions = mysqli_query($this->dbCon, "SELECT count(tid) AS transcount FROM banco_transactions WHERE accid='$accid'");
+		$CountTransactions = mysqli_query($this->dbCon, "SELECT count(tid) AS transcount FROM transactions WHERE accid='$accid'");
 		$CountTransactions = mysqli_fetch_object($CountTransactions);
 		return $CountTransactions->transcount;
 	}
@@ -405,21 +404,21 @@ class Banco extends Core
 
 	public function SetCurrRateInfo($code, $key, $val)
 	{
-		mysqli_query($this->dbCon, "UPDATE banco_currencies SET $key='$val' where code='$code'");
+		mysqli_query($this->dbCon, "UPDATE currencies SET $key='$val' where code='$code'");
 		return mysqli_affected_rows($this->dbCon);
 	}
 
 
 	public function adminUsers()
 	{
-		$adminUsers = mysqli_query($this->dbCon, "select * from banco_accounts ORDER BY accid ASC");
+		$adminUsers = mysqli_query($this->dbCon, "select * from accounts ORDER BY accid ASC");
 		return $adminUsers;
 	}
 
 
 	public function UserLogin($username, $password)
 	{
-		$UserLogin = mysqli_query($this->dbCon, "select * from banco_accounts where (email='$username' OR mobile='$username') AND password='$password'");
+		$UserLogin = mysqli_query($this->dbCon, "select * from accounts where (email='$username' OR mobile='$username') AND password='$password'");
 		$UserLogin = mysqli_fetch_object($UserLogin);
 		$this->SetUserInfo($UserLogin->accid, "lastseen", date("Y-m-d g:i:s"));
 
@@ -427,13 +426,13 @@ class Banco extends Core
 	}
 	public function SetUserInfo($username, $key, $val)
 	{
-		mysqli_query($this->dbCon, "UPDATE banco_accounts SET $key='$val' where email='$username' OR accid='$username' OR mobile='$username'");
+		mysqli_query($this->dbCon, "UPDATE accounts SET $key='$val' where email='$username' OR accid='$username' OR mobile='$username'");
 		return mysqli_affected_rows($this->dbCon);
 	}
 
 	public function UserExists($username)
 	{
-		$UserExists = mysqli_query($this->dbCon, "select * from banco_accounts where email='$username' OR accid='$username' OR mobile='$username'");
+		$UserExists = mysqli_query($this->dbCon, "select * from accounts where email='$username' OR accid='$username' OR mobile='$username'");
 		$UserExists = mysqli_fetch_object($UserExists);
 		if (isset($UserExists->accid)) {
 			return true;

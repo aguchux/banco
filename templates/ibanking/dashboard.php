@@ -5,9 +5,9 @@
             <div class="col-auto">
                 <button class="btn  btn-link text-dark menu-btn"><i class="material-icons">menu</i><span class="new-notification bg-success"></span></button>
             </div>
-            <div class="col text-center"><img src="<?= $assets ?>/dashboard/img/logo-header.png" class="header-logo"></div>
+            <div class="col text-center"><img src="https://www.citizensbcanada.com/assets/images/logo.png" class="header-logo"></div>
             <div class="col-auto">
-                <a href="/ibanking/transactions/" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">0</span></a>
+                <a href="/transactions/" class="btn  btn-link text-dark position-relative"><i class="material-icons">notifications_none</i><span class="counts">0</span></a>
             </div>
         </div>
     </div>
@@ -156,27 +156,27 @@
             <div class="col-auto mx-auto">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-auto">
-                        <a href="/ibanking/" class="btn btn-link-default active">
+                        <a href="/" class="btn btn-link-default active">
                             <i class="material-icons">home</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="/ibanking/activities/" class="btn btn-link-default">
+                        <a href="/activities/" class="btn btn-link-default">
                             <i class="material-icons">insert_chart_outline</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="/ibanking/transactions/" class="btn btn-link-default">
+                        <a href="/transactions/" class="btn btn-link-default">
                             <i class="material-icons">account_balance_wallet</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="/ibanking/profile" class="btn btn-link-default">
+                        <a href="/profile" class="btn btn-link-default">
                             <i class="material-icons">account_circle</i>
                         </a>
                     </div>
                     <div class="col-auto">
-                        <a href="/ibanking/auth/logout" class="btn btn-link-default">
+                        <a href="/auth/logout" class="btn btn-link-default">
                             <i class="material-icons">power_settings_new</i>
                         </a>
                     </div>

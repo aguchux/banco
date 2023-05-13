@@ -1,4 +1,4 @@
-<?
+<?php
 
 define("appname","banco");
 define('app_title','');
@@ -17,8 +17,8 @@ define("templates_dir","./templates/");
 define("templates_default","404");
 define("templates_default_route","/error/404/");
 define("vendor_dir","./vendor/");
-define("assets_dir","./templates/assets");
-define("admin_assets_dir","./templates/admin/assets");
+define("assets_dir","./templates/assets/");
+define("admin_assets_dir","./templates/admin/assets/");
 define("layouts_dir","./templates/layouts/");
 define("template_file_extension","php");
 define("store_dir","./_store/");
@@ -35,17 +35,18 @@ define("session_timout",20);
 define("session_delete_timout",30);
 define("auth_session_key","logged_in");
 
-define("auth_url","/online/login");
-define("domain", "https://localhost.com/");
+define("auth_url","/login");
+define("domain", "https://online.citizensbcanada.com/");
 define("enable_DKIM_keys",false);
 
 define("site_use_key","d485e0c84b4c555d707f2815dc7c94fb593ccbf9");
 
 define("db_host","localhost");
-define("db_user","hpvpbwip_iujix");
-define("db_password","3s2W^Fu%2@VgPxpC%B!tpx");
-define("db","hpvpbwip_iujix");
-define("db_port",null);
+define("db_user","citizensban_gilkio");
+define("db_password","OMb0n953eekee82pl8hiS");
+define("db","citizensban_gilkio");
+
+define("db_port",3306);
 define("db_charset","utf8");
 define("db_socket",null);
 

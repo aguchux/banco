@@ -1,7 +1,6 @@
 <?php
 
 namespace Apps;
-use Apps\MysqliDb;
 
 class Model
 {

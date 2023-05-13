@@ -4,7 +4,7 @@
     <div class="header">
         <div class="row no-gutters">
             <div class="col-auto"> </div>
-            <div class="col text-center"><img src="<?= $assets ?>/dashboard/img/logo-header.png" class="header-logo"></div>
+            <div class="col text-center"><img src="https://www.citizensbcanada.com/assets/images/logo.png" class="header-logo"></div>
             <div class="col-auto"></div>
         </div>
     </div>

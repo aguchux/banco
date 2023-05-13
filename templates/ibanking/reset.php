@@ -6,7 +6,7 @@
         <div class="header">
             <div class="row no-gutters">
                 <div class="col-auto">
-                    <a href="/ibanking/auth/login" class="btn  btn-link text-dark"><i class="material-icons">chevron_left</i></a>
+                    <a href="/auth/login" class="btn  btn-link text-dark"><i class="material-icons">chevron_left</i></a>
                 </div>
                 <div class="col text-center"></div>
                 <div class="col-auto">
@@ -18,14 +18,14 @@
         <div class="row no-gutters login-row">
             <div class="col align-self-center px-3 text-center">
                 <br>
-                <img src="<?= $assets ?>/dashboard/img/logo-login.png" alt="Landmark Finance Bank" class="logo-small">
+                <img src="<?= $assets ?>/dashboard/img/logo-login.png" alt="Citizens Bank Canada" class="logo-small">
                 <form class="form-signin mt-3" action="/banco/auth/reset" method="POST">
                     <?= $Self->tokenize() ?>
                     <?= $Self->Toast() ?>
                     <div class="form-group">
                         <input type="text" id="username" name="username" class="form-control form-control-lg text-center" placeholder="Account Number OR Email" required aria-required="true" autofocus="">
                     </div>
-                    <p class="text-secondary mt-4 d-block">If you already have password,<br>please <a href="/ibanking/auth/login" class="">Sign in</a> here</p>
+                    <p class="text-secondary mt-4 d-block">If you already have password,<br>please <a href="/auth/login" class="">Sign in</a> here</p>
 
             </div>
         </div>
